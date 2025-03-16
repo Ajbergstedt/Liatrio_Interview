@@ -22,3 +22,11 @@
 #I've began learning about persistance with with docker containers. So far the trainings have talked about volumes, which will store data external to the docker container and allows for data to persist between iterations of the container, so long as they are pointed to the same file path.
 
 #I've also began learning about the bind method of persistence with docker containers, which seems to be useful for continuous integration and integration, as it ties the docker container to the host file/file path and allows for the real time sync. I've also read up more on this and found that it allows for changes to be made from either side, which seems like it could be a potential vulerability for a secure system.
+
+## 3/15/25
+
+#Worked with persistence again and had some trouble adressing a volume. I wasn't able to tell what I was doing wrong. I think it may have been in how I defined the target. It is a little confusing using windows as going back and forth between its file paths and the linux paths can get a little confusing.
+
+#Learned about multi container apps with the todo app and a sql server. It made a bit more sense with the persistance to have one box to have the app in and another box to hold its data. I also learned some basics on how to network the containers together
+
+#I learned about docker compose! This was exciting. It reminded me more of the coding that i've done before in matlab. It was awesome seeing how quickly it can create the requested containers and is a great glimpse at the power of docker to deploy images.
