@@ -23,8 +23,8 @@ jobs:
           docker run -d -p 80:80 --name berg-app berg-app:test
           # Wait for app to start
           sleep 5
-          # Install test dependencies locally
-          npm install axios chai mocha
+          # Install test dependencies locally (pin chai to 4.4.1)
+          npm install axios chai@4.4.1 mocha
           # Write test script
           cat << 'EOF' > test.js
           const axios = require("axios");
