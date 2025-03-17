@@ -5,13 +5,7 @@ const port = 80;
 app.get('/', (req, res) => {
     const jsonObject = {
         message: "My name is Austin",
-        timestamp: Date.now(),
-        stringify: function () {
-            return JSON.stringify({
-                message: this.message,
-                timestamp: this.timestamp
-            });
-        }
+        timestamp: Date.now()
     };
     res.json(jsonObject);
 });
