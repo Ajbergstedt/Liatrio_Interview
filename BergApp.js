@@ -3,8 +3,17 @@ const app = express();
 const port = 80;
 
 app.get('/', (req, res) => {
-    const jsonObject = {"message":"My name is Austin","timestamp":Date.now()};
-    res.send(JSON.stringify(jsonObject));  // Send raw, minified string
+    const jsonObject = {
+        message: "My name is Austin",
+        timestamp: Date.now(),
+        stringify: function () {
+            return JSON.stringify({
+                message: this.message,
+                timestamp: this.timestamp
+            });
+        }
+    };
+    res.json(jsonObject);
 });
 
 const server = app.listen(port, () => {
