@@ -5,9 +5,9 @@ const port = 80;
 app.get('/', (req, res) => {
     const jsonObject = {
         "message": "My name is Austin",
-        "timestamp": Math.floor(Date.now() / 1000)  // Seconds instead of milliseconds
+        "timestamp": Date.now()
     };
-    res.send(JSON.stringify(jsonObject));
+    res.send(JSON.stringify(jsonObject));  // Send raw, minified string
 });
 
 const server = app.listen(port, () => {
