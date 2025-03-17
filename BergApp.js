@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 80;
 const myName = "Austin";
 
-app.get('/api/message', (req, res) => {
+app.get('/', (req, res) => {
     const jsonObject = {
-        "Message": `My name is ${myName}`,
-        "timestamp": new Date().toISOString()
+        "message": `My name is ${myName}`,
+        "timestamp": Date.now()
     };
     res.json(jsonObject);
     });
