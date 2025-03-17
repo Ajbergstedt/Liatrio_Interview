@@ -30,3 +30,14 @@
 #Learned about multi container apps with the todo app and a sql server. It made a bit more sense with the persistance to have one box to have the app in and another box to hold its data. I also learned some basics on how to network the containers together
 
 #I learned about docker compose! This was exciting. It reminded me more of the coding that i've done before in matlab. It was awesome seeing how quickly it can create the requested containers and is a great glimpse at the power of docker to deploy images.
+
+## 3/16/25
+#Working late last night I finished the docker basic training workshop. I learned that in writing yml files the tab key shouldn't be used to make spaces. this results in a parsing error when executing the file. 
+
+#I also learned that it is best practice to include dependencies in the package.json file for the build so that it remains cahed. this speeds up future builds and helps to keep the size of my container to a minimum. 
+
+#I was able to to complete and put my app into a container. Upon running it I noticed that while it did run it wasn't exiting correctly, so I had to initiate a forced close by hitting ctrl+c 3 times. In researching this more with grok it seems as though there was some kind of open ended process suspected to be happening in node. with the help of grok I was able to add some code that ensured a smooth termination of the app when I hit ctrl+c.
+
+#I next synced my vs code to the repository in github, which took a bit of configuring. I had to go through the initial set up to sync an initialize github and connect my local folder to my repository. I also set up a github ignore file for the node modules folder, and was successful in syncing all my local files. 
+
+ #I was able to write my first iteration of the yml file that I need to set up my github action, and have it uploaded to my repository. I was interested to see that it is the same type of file as docker compose and am making the conenction that this is an important file for automating processes. I included the test file in the apprentice action folder as directed, and am experiencing several failures, notably that it isn't able to reach my app at the site. I checked into what i believed was the code for the test file and noted that it calls for port 80 as was noted and that the file path it calls for on the port is simply root. I will continue tomorrow by analyzing the errors and trying to update my code, rebuilding my container and image, and trying again before reaching out to the group.
