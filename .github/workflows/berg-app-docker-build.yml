@@ -13,11 +13,9 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: run tests
+      - name: Run tests
         uses: liatrio/github-actions/apprentice-action@master
-        with:
-          image: berg-app:test
-          port: 3000
+        # No 'with' block—action builds and tests from Dockerfile
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -25,7 +23,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: build and push
+      - name: Build and push
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/berg-app:lastest .
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/berg-app:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/berg-app:latest
