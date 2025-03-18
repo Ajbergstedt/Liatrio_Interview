@@ -36,17 +36,17 @@ jobs:
         id: run-tests
         uses: liatrio/github-actions/apprentice-action@master
         continue-on-error: true
+        run: |
+          node $GITHUB_ACTION_PATH/index.js > test_output.txt 2>&1
       - name: Verify 6/7 Tests Passed
         run: |
-          PASS_COUNT=$(grep "passing" run-tests.log | awk '{print $1}')
+          PASS_COUNT=$(cat test_output.txt | grep -c "✔")
           if [ "$PASS_COUNT" -eq 6 ]; then
             echo "6/7 tests passed, proceeding to secondary test"
           else
             echo "Expected 6/7 tests to pass, but got $PASS_COUNT passing tests"
             exit 1
           fi
-        env:
-          GITHUB_ACTION_PATH: ${{ github.action_path }}
       - name: Secondary Test for Minification
         run: |
           RESPONSE=$(curl -s http://localhost:80/)
