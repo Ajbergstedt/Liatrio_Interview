@@ -3,11 +3,18 @@ const app = express();
 const port = 80;
 
 app.get('/', (req, res) => {
-    const jsonObject = {
+    /* const jsonObject = {
         message: "My name is Austin",
-        timestamp: Date.now()
-    };
-    res.json(jsonObject);
+        timestamp: Date.now(),
+        stringify: function () {
+            return JSON.stringify({
+                message: this.message,
+                timestamp: this.timestamp
+            });
+        }
+    }; */
+    const jsonObj = {}; // Minimal JSON object for probing
+    res.json(jsonObj);
 });
 
 const server = app.listen(port, () => {
