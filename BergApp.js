@@ -3,21 +3,11 @@ const app = express();
 const port = 80;
 
 app.get('/', (req, res) => {
-    /* const jsonObject = {
-        message: "My name is Austin",
-        timestamp: Date.now(),
-        stringify: function () {
-            return JSON.stringify({
-                message: this.message,
-                timestamp: this.timestamp
-            });
-        }
-    }; */
     const jsonObj = {
         message: "My name is Austin",
         timestamp: Date.now(),
-        stringify: "stringify placeholder"
-    }; // Test if string value affects test 7
+        version: "1.0" // Kept for deployment verification
+    };
     res.json(jsonObj);
 });
 

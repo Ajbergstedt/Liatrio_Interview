@@ -32,14 +32,19 @@ jobs:
       - name: Test endpoint response
         run: |
           curl -s http://localhost:80/ || echo "Failed to connect to endpoint"
-      - name: Run liatrio/github-actions/apprentice-action@master and Capture Output
+      - name: Run liatrio/github-actions/apprentice-action@master
         id: run-tests
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/liatrio/github-actions/master/apprentice-action/action.yml)" > test_output.txt 2>&1
+        uses: liatrio/github-actions/apprentice-action@master
         continue-on-error: true
+      - name: Capture Test Output
+        run: |
+          chmod +x capture_output.sh
+          ./capture_output.sh
+        env:
+          GITHUB_ACTION_PATH: ${{ github.action_path }}
       - name: Verify 6/7 Tests Passed
         run: |
-          PASS_COUNT=$(cat test_output.txt | grep "passing" | awk '{print $1}')
+          PASS_COUNT=${{ steps.run-tests.outputs.pass_count }}
           if [ -z "$PASS_COUNT" ]; then
             echo "Could not parse passing count from test output"
             exit 1
@@ -61,11 +66,10 @@ jobs:
             exit 1
           fi
       - name: Push Docker image to Docker Hub
-        if: success()
         run: |
           docker push ajbergstedt/bergapp:latest
       - name: Stop and remove container
         if: always()
         run: |
           docker stop bergapp_container || true
-          docker rm bergapp_container || true
+          # Removed docker rm to avoid deleting the image locally
