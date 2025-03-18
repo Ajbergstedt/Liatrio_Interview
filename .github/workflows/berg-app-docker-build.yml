@@ -32,16 +32,18 @@ jobs:
       - name: Test endpoint response
         run: |
           curl -s http://localhost:80/ || echo "Failed to connect to endpoint"
-      - name: Run liatrio/github-actions/apprentice-action@master
+      - name: Run liatrio/github-actions/apprentice-action@master and Capture Output
         id: run-tests
-        uses: liatrio/github-actions/apprentice-action@master
-        continue-on-error: true
-      - name: Capture Test Output
         run: |
-          cat $GITHUB_STEP_SUMMARY > test_output.txt || echo "No summary, using step output" > test_output.txt
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/liatrio/github-actions/master/apprentice-action/action.yml)" > test_output.txt 2>&1
+        continue-on-error: true
       - name: Verify 6/7 Tests Passed
         run: |
           PASS_COUNT=$(cat test_output.txt | grep "passing" | awk '{print $1}')
+          if [ -z "$PASS_COUNT" ]; then
+            echo "Could not parse passing count from test output"
+            exit 1
+          fi
           if [ "$PASS_COUNT" -eq 6 ]; then
             echo "6/7 tests passed, proceeding to secondary test"
           else
