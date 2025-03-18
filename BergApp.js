@@ -13,7 +13,9 @@ app.get('/', (req, res) => {
             });
         }
     }; */
-    const jsonObj = {}; // Minimal JSON object for probing
+    const jsonObj = {
+        message: "My name is Austin"
+    }; // Probes tests 2 and 5
     res.json(jsonObj);
 });
 
