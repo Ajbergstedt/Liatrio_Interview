@@ -3,7 +3,7 @@ const app = express();
 const port = 80;
 
 app.get('/', (req, res) => {
-    /* const jsonObject = {
+     const jsonObj = {
         message: "My name is Austin",
         timestamp: Date.now(),
         stringify: function () {
@@ -12,11 +12,11 @@ app.get('/', (req, res) => {
                 timestamp: this.timestamp
             });
         }
-    }; */
-    const jsonObj = {
+    }; 
+    /*const jsonObj = {
         message: "My name is Austin",
         timestamp: Date.now()
-    }; // Passes tests 1-6
+    }; // Passes tests 1-6*/
     res.json(jsonObj);
 });
 
