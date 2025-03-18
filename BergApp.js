@@ -14,8 +14,9 @@ app.get('/', (req, res) => {
         }
     }; */
     const jsonObj = {
-        message: "My name is Austin"
-    }; // Probes tests 2 and 5
+        message: "My name is Austin",
+        timestamp: Date.now()
+    }; // Passes tests 1-6
     res.json(jsonObj);
 });
 
