@@ -38,14 +38,15 @@ jobs:
         continue-on-error: true
       - name: Verify 6/7 Tests Passed
         run: |
-          TEST_LOG=$(cat $GITHUB_STEP_SUMMARY)
-          PASS_COUNT=$(echo "$TEST_LOG" | grep -c "✔")
+          PASS_COUNT=$(grep "passing" run-tests.log | awk '{print $1}')
           if [ "$PASS_COUNT" -eq 6 ]; then
             echo "6/7 tests passed, proceeding to secondary test"
           else
             echo "Expected 6/7 tests to pass, but got $PASS_COUNT passing tests"
             exit 1
           fi
+        env:
+          GITHUB_ACTION_PATH: ${{ github.action_path }}
       - name: Secondary Test for Minification
         run: |
           RESPONSE=$(curl -s http://localhost:80/)
