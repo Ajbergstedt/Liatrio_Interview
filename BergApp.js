@@ -3,7 +3,7 @@ const app = express();
 const port = 80;
 
 app.get('/', (req, res) => {
-     const jsonObj = {
+    /* const jsonObject = {
         message: "My name is Austin",
         timestamp: Date.now(),
         stringify: function () {
@@ -12,11 +12,12 @@ app.get('/', (req, res) => {
                 timestamp: this.timestamp
             });
         }
-    }; 
-    /*const jsonObj = {
+    }; */
+    const jsonObj = {
         message: "My name is Austin",
-        timestamp: Date.now()
-    }; // Passes tests 1-6*/
+        timestamp: Date.now(),
+        stringify: "stringify placeholder"
+    }; // Test if string value affects test 7
     res.json(jsonObj);
 });
 
