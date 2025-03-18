@@ -34,7 +34,7 @@ jobs:
           curl -s http://localhost:80/ || echo "Failed to connect to endpoint"
       - name: Run liatrio/github-actions/apprentice-action@master
         id: run-tests
-        uses: liatrio/github-actions/apprentice-action@master
+        uses: liatrio/github-actions/apprentice-action@0b41561
         continue-on-error: true
       - name: Capture Test Output
         run: |
@@ -75,4 +75,3 @@ jobs:
         if: always()
         run: |
           docker stop bergapp_container || true
-          # Removed docker rm to avoid deleting the image locally
