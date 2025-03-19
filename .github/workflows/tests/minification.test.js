@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { expect } from 'chai';
+const axios = require('axios');
+const expect = require('chai').expect;
 
 describe('Tests for Minification', () => {
   it('should return a minified JSON object with length less than 100 characters', async () => {
