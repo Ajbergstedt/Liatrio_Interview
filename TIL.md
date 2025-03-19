@@ -57,6 +57,6 @@
 
 #was able to implement a test for minification with an arbitrary value (100) set for the length of the json object as a standard for minification. this test is set to start after the external dependency from the liatrio apprentice repo passes all test criteria. if there is a failure the test I implemented won't start, and the docker image won't push to docker hub. 
 
-# I ran into some trouble implementing my test for minification and had to revert chai back to 4.3.6 for common js compatability as the litrio tests would fail when I tried to update for ESM.
+#I ran into some trouble implementing my test for minification and had to revert chai back to 4.3.6 for common js compatability as the litrio tests would fail when I tried to update for ESM.
 
 I started to make some headway toward deploying to the cloud, but ran into issues with azure, so I will be opting to use AWS to deploy and will ideally be able to use the preformed action in github.
