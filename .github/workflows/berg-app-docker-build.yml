@@ -48,10 +48,14 @@ jobs:
         id: liatrio-tests
         uses: liatrio/github-actions/apprentice-action@0b41561cca6822cc8d880fe0e49e7807a41fdf91
 
+      - name: Debug Test File Existence
+        run: |
+          ls -la .github/workflows/tests/minification.test.js || echo "File not found in .github/workflows/tests directory"
+
       - name: Run Custom Minification Test
         if: success()
         run: |
-          npx mocha tests/minification.test.js --reporter spec
+          npx mocha .github/workflows/tests/minification.test.js --reporter spec
         id: minification-test
 
       - name: Push Docker image to Docker Hub
