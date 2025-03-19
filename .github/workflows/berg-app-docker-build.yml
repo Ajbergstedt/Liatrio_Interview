@@ -42,7 +42,7 @@ jobs:
 
       - name: Install Test Dependencies
         run: |
-          npm install axios chai mocha --save-dev
+          npm install axios@1.8.3 chai@4.3.6 mocha@10.7.3 --save-dev
 
       - name: Run liatrio/github-actions/apprentice-action
         id: liatrio-tests
