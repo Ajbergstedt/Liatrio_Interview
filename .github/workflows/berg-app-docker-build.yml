@@ -40,22 +40,27 @@ jobs:
         run: |
           curl -s http://localhost:80/ || echo "Failed to connect to endpoint"
 
-      - name: Run liatrio/github-actions/apprentice-action@master
-        uses: liatrio/github-actions/apprentice-action@0b41561cca6822cc8d880fe0e49e7807a41fdf91
-        continue-on-error: true
-
-      - name: Run fixed tests
+      - name: Install Test Dependencies
         run: |
-          # Placeholder for additional test commands if needed
-          echo "Running fixed tests (if any)"
+          npm install axios chai mocha --save-dev
+
+      - name: Run liatrio/github-actions/apprentice-action
+        id: liatrio-tests
+        uses: liatrio/github-actions/apprentice-action@0b41561cca6822cc8d880fe0e49e7807a41fdf91
+
+      - name: Run Custom Minification Test
+        if: success()
+        run: |
+          npx mocha minification.test.js --reporter spec
+        id: minification-test
 
       - name: Push Docker image to Docker Hub
-        if: success()  # Only push if all previous steps succeed
+        if: success()
         run: |
           docker push ajbergstedt/bergapp:latest
 
       - name: Stop and remove container
-        if: always()
+        if: success()
         run: |
           docker stop bergapp_container || true
           docker rm bergapp_container || true
