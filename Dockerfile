@@ -3,5 +3,5 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY BergApp.js .
-EXPOSE 3000
+EXPOSE 80
 CMD ["node", "BergApp.js"]
