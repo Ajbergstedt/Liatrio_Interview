@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  bergapp:
+    image: ajbergstedt/bergapp:latest
+    ports:
+      - "80:80"
+    container_name: bergapp
