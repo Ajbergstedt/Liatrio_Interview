@@ -50,3 +50,13 @@
 #tried many interations to be able to parse through the output of the test function based on what i could glean from the action's logs, but was ultimately unsuccessful. will seek guidance on this subject in the morning. 
 
 #did some preliminary research on deploying to the cloud as well as setting up a github action to automoate the process and found that github has a template made for both azure as well as AWS (amazon ECS?) will look into that as well and plan on making some progress toward finishing up the project and incorporating the feedback i get to find success with that pesky 7th element of the test.
+
+
+## 3/18/25
+#I feel like I made some good progress today. connected with Joshua after reviewing best practices for dependencies, relayed the info I learned as well as potential solutions for the 7th element of the test. found inspiration from his feed back and made the realization that best practice for the external dependency would dictate that I use a previous version of the dependency that doesn't mess up the code. This should be valid since the latest iteration has a bug, going back to the next most recent without the bug is apprpriate. 
+
+#was able to implement a test for minification with an arbitrary value (100) set for the length of the json object as a standard for minification. this test is set to start after the external dependency from the liatrio apprentice repo passes all test criteria. if there is a failure the test I implemented won't start, and the docker image won't push to docker hub. 
+
+#I ran into some trouble implementing my test for minification and had to revert chai back to 4.3.6 for common js compatability as the litrio tests would fail when I tried to update for ESM.
+
+I started to make some headway toward deploying to the cloud, but ran into issues with azure, so I will be opting to use AWS to deploy and will ideally be able to use the preformed action in github.
