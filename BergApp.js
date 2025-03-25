@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
     const jsonObj = {
         message: "My name is Austin",
         timestamp: Date.now(),
-        version: "1.0" // Kept for deployment verification
+        version: "1.1" // Kept for deployment verification
     };
     res.json(jsonObj);
 });
