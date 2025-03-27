@@ -1,6 +1,11 @@
 version: '3.8'
 services:
   bergapp:
+
+# SUBSECTION: SERVICE CONFIGURATION
+# This subsection specifies the configuration for the 'bergapp' service, including the Docker image
+# to use, port mappings, and container naming.
+
     image: ajbergstedt/bergapp:latest
     ports:
       - "80:80"
