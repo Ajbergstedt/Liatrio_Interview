@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     const jsonObj = {
         message: "My name is Austin",
         timestamp: Date.now(),
-        version: "1.2"
+        version: "1.3"
     };
     res.json(jsonObj);
 });
